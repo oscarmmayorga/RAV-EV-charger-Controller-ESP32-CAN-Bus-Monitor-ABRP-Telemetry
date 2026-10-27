@@ -39,8 +39,8 @@ MCP_CAN CAN2(CAN2_CS);
 //  ABRP API credentials (API_KEY and TOKEN are NVS-backed and editable via web)
 // ─────────────────────────────────────────────────────────────────────────────
 const char* API_URL = "https://api.iternio.com/1/tlm/send";
-char nvsApiKey[64]  = "a5e91557-d169-47eb-a8af-e29c31c1f13a";  // default, overwritten by NVS
-char nvsToken[64]   = "ecd465e7-ac91-4031-9e07-fd2ba1fd4f81";  // default, overwritten by NVS
+char nvsApiKey[64]  = "a5e91557-d169-47eb-a8af-";  // default, overwritten by NVS
+char nvsToken[64]   = "ecd465e7-ac91-4031-9e07-";  // default, overwritten by NVS
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  AP fallback credentials (fixed)
@@ -255,7 +255,7 @@ void decodeCAN(MCP_CAN &mcp) {
       v_bat_current = fPA;
       v_bat_power   = fPV * fPA / 1000.0f;
       if (lastChgMainState==4&&autoModeOn){
-        v_bat_power   =v_bat_power   +v_chg_power;
+        v_bat_power   =v_bat_power   - v_chg_power;
       }
       break;
     }
