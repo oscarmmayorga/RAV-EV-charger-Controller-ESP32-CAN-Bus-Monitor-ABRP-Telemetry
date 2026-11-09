@@ -255,7 +255,7 @@ void decodeCAN(MCP_CAN &mcp) {
       v_bat_current = fPA;
       v_bat_power   = fPV * fPA / 1000.0f;
       if (lastChgMainState==4&&autoModeOn){
-        v_bat_power   =v_bat_power   - v_chg_power;
+        v_bat_power   =v_bat_power   + v_chg_power;
       }
       break;
     }
